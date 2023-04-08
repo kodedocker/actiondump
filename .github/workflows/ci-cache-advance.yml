@@ -19,11 +19,6 @@ jobs:
         with:
           node-version: v16.14.2
 
-      - name: Get node version
-        id: node
-        run: |
-          echo "::set-output name=version::$(node -v)"
-
       - name: Get node_modules cache
         uses: actions/cache@v3.0.2
         id: node_modules
@@ -37,5 +32,10 @@ jobs:
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
-          
+            
+      - if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}
+        name: List the state of node modules
+        continue-on-error: true
+        run: npm list    
+        
       - run: yarn install
