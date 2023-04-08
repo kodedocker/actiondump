@@ -1,5 +1,6 @@
-name: Caching with npm
+name: Caching with npm v3
 on:  workflow_dispatch
+
 jobs:
   build:
     runs-on: ubuntu-latest
