@@ -2,6 +2,11 @@ name: CI cache
 
 on: workflow_dispatch
 
+concurrency: 
+  group: ci-without-cache
+  cancel-in-progress: true
+
+
 jobs:
   ci:
     name: Running CI
