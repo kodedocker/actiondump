@@ -13,8 +13,8 @@ jobs:
         env:
           cache-name: cache-node-modules
         with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
@@ -26,6 +26,6 @@ jobs:
         run: npm list
 
       - name: Install dependencies
-        run: npm install
+        run: yarn install
 
      
