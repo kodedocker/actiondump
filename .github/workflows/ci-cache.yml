@@ -19,9 +19,7 @@ jobs:
         with:
           node-version: v16.14.2
           cache: 'yarn'
-          # Useful for caching dependencies in monorepos:
           cache-dependency-path: yarn.lock
 
       - run: yarn install
 
-      ### - run: yarn test
